@@ -30,25 +30,27 @@ The images are categorized into several defect types such as:
 
 The dataset is structured into train, test, and validation directories.
 
-### Key Steps
+### Project Workflow
 
-Data Loading and Preprocessing:
+1. Data Loading and Preprocessing:
 - Images are loaded, resized to 224x224 pixels, and normalized to the range [0, 1].
 - The labels (defect types) are encoded using label encoding to transform categorical data into numeric form.
 - The dataset is split into training and test sets (80% training, 20% testing).
 
-Model Architecture:
+2. Model Architecture:
 - A Convolutional Neural Network (CNN) is built with two convolutional layers followed by max-pooling, flattening, and fully connected layers.
 - The model is compiled with the Adam optimizer and sparse categorical cross-entropy loss, suitable for multi-class classification.
 
-Model Training:
+3. Model Training:
 - The model is trained for 10 epochs with a batch size of 32, and validation is performed on the test set.
 
-Model Evaluation:
+4. Model Evaluation:
 - The model's accuracy is evaluated on the test set.
 - The classification report and confusion matrix provide insights into the precision, recall, and F1-score of each defect type.
     
 ### Results
+
+![screenshot-localhost_8888-2025 01 30-10_10_32](https://github.com/user-attachments/assets/06d45cd3-4bd0-4df2-942f-618b8682221b)
 
 The model achieved a test accuracy of 89.16%, with performance varying across different defect types. The classification report provides detailed metrics for each defect type, including precision, recall, and F1-score.
 

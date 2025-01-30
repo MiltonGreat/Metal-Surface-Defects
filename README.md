@@ -2,18 +2,24 @@
 
 ### Overview
 
-In the manufacturing industry, identifying and predicting defects early in the production process is essential to improve product quality, reduce costs, and enhance overall efficiency. This project utilizes machine learning techniques to predict the severity of defects in manufacturing based on data from various factors such as:
+This project uses machine learning techniques to predict the severity of defects in manufacturing. The goal is to classify images of metal surfaces into different defect categories based on the type of defect observed. A Convolutional Neural Network (CNN) model is employed for image classification, where the input consists of images of metal surfaces with six possible defect types.
 
-- Defect Type: The type of defect observed in the product (e.g., scratches, cracks).
-- Defect Location: The part of the product or surface where the defect occurs (e.g., internal or surface defects).
-- Inspection Method: The method used for inspecting the product (e.g., visual inspection, automated testing).
-- Repair Cost: The estimated cost required for repair.
+### Objectives
 
-The data used in this project includes simulated images of surface defects from a manufacturing setting, with the aim to train a classification model that can predict the severity of defects.
+The primary objectives of this project are:
+
+- Defect Classification: Classify images of metal surfaces into different defect categories.
+- Severity Prediction: Predict the severity of defects using machine learning techniques.
+- Model Evaluation: Evaluate the performance of the CNN model and analyze its predictions using various metrics.
 
 ### Dataset
 
-The dataset used in this project is the Metal Surface Defects dataset, available in the form of BMP images representing different types of defects. The images are categorized into several defect types such as:
+The dataset consists of images from the NEU Metal Surface Defects Data set, which contains 1,800 images classified into six defect types. The images are in BMP format and have been resized to a consistent size of 224x224 pixels.
+
+- Training Data: 1,324 images
+- Test Data: 332 images
+    
+The images are categorized into several defect types such as:
 
 - Crazing
 - Inclusion
@@ -24,50 +30,35 @@ The dataset used in this project is the Metal Surface Defects dataset, available
 
 The dataset is structured into train, test, and validation directories.
 
-### Example Image Categories
-
-- train/Crazing
-- train/Inclusion
-- train/Patches
-- train/Pitted
-- train/Rolled
-- train/Scratches
-
-The project involves image classification to detect and classify these defects based on their characteristics.
-
 ### Key Steps
 
 Data Loading and Preprocessing:
-- The images are loaded from the train, test, and validation directories.
-- Preprocessing steps like resizing and flattening are applied to prepare the image data for machine learning models.
-- Label encoding is used to handle categorical features such as defect type, location, and severity.
+- Images are loaded, resized to 224x224 pixels, and normalized to the range [0, 1].
+- The labels (defect types) are encoded using label encoding to transform categorical data into numeric form.
+- The dataset is split into training and test sets (80% training, 20% testing).
 
-Model Building:
-- Two types of models were explored: Dense models (using flattened images) and Convolutional Neural Networks (CNNs).
-- For dense models, images are flattened into vectors before being fed into the model.
-- CNN models take advantage of spatial relationships in the images to perform better.
+Model Architecture:
+- A Convolutional Neural Network (CNN) is built with two convolutional layers followed by max-pooling, flattening, and fully connected layers.
+- The model is compiled with the Adam optimizer and sparse categorical cross-entropy loss, suitable for multi-class classification.
+
+Model Training:
+- The model is trained for 10 epochs with a batch size of 32, and validation is performed on the test set.
 
 Model Evaluation:
-- The models are evaluated using various metrics such as accuracy, precision, recall, F1-score, and confusion matrix.
-- Hyperparameter tuning is performed using GridSearchCV to optimize model performance.
-
-SMOTE:
-- SMOTE is used to handle class imbalance by generating synthetic samples for the minority class.
-
+- The model's accuracy is evaluated on the test set.
+- The classification report and confusion matrix provide insights into the precision, recall, and F1-score of each defect type.
+    
 ### Results
 
-The model was able to achieve a classification accuracy of 74.4%, with a good balance of precision and recall across different defect types. The confusion matrix and classification report provide insights into model performance for each defect type.
-
-### Hyperparameter Tuning
-
-A Random Forest classifier was used, and the model's hyperparameters were tuned using GridSearchCV to improve the performance. The tuned model provided an accuracy improvement and better generalization to unseen data.
+The model achieved a test accuracy of 89.16%, with performance varying across different defect types. The classification report provides detailed metrics for each defect type, including precision, recall, and F1-score.
 
 ### Future Work
 
 - Explore more advanced models: Experiment with more complex models like Deep Neural Networks or pre-trained CNNs (e.g., VGG16 or ResNet) for potentially better performance.
 - Data augmentation: Use techniques like flipping, rotating, and scaling to further augment the training dataset.
-- Deployment: Deploy the model in a web application or integrate it into the manufacturing pipeline to automate defect severity prediction.
 
 ### Source
+
+Dataset: [Metal Surface Defects Dataset on Kaggle](https://www.kaggle.com/datasets/fantacher/neu-metal-surface-defects-data)
 
 https://www.kaggle.com/datasets/fantacher/neu-metal-surface-defects-data

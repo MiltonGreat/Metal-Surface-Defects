@@ -62,5 +62,3 @@ The model achieved a test accuracy of 89.16%, with performance varying across di
 ### Source
 
 Dataset: [Metal Surface Defects Dataset on Kaggle](https://www.kaggle.com/datasets/fantacher/neu-metal-surface-defects-data)
-
-https://www.kaggle.com/datasets/fantacher/neu-metal-surface-defects-data

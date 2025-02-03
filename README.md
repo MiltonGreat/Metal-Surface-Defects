@@ -18,6 +18,8 @@ The dataset consists of images from the NEU Metal Surface Defects Data set, whic
 
 - Training Data: 1,324 images
 - Test Data: 332 images
+
+![screenshot-www kaggle com-2025 02 03-14_38_17](https://github.com/user-attachments/assets/d478455d-380b-4997-847e-948ee49491ad)
     
 The images are categorized into several defect types such as:
 

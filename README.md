@@ -50,16 +50,27 @@ The dataset is structured into train, test, and validation directories.
 - The model's accuracy is evaluated on the test set.
 - The classification report and confusion matrix provide insights into the precision, recall, and F1-score of each defect type.
     
-### Results
+### Key Insights:
+
+- **Class 0 (RS)** is well predicted, with very few misclassifications (1 misclassified as Class 2).
+- **Class 1 (Pa)** has 8 instances misclassified as Class 3 and 2 as Class 5, indicating it’s sometimes confused with other defects.
+- **Class 2 (Cr)** is almost perfectly predicted, with only 1 misclassification as Class 0 and 1 misclassified as Class 3.
+- **Class 3 (PS)** is more challenging, with some misclassifications (2 as Class 1 and 5 as Class 5), which aligns with its lower precision and higher recall.
+- **Class 4 (In)** is perfectly predicted, with no misclassifications.
+- **Class 5 (Sc)** has some misclassifications (10 as Class 1, 6 as Class 3), which aligns with its lower recall.
+
+### Results:
 
 ![screenshot-localhost_8888-2025 01 30-10_10_32](https://github.com/user-attachments/assets/06d45cd3-4bd0-4df2-942f-618b8682221b)
 
-The model achieved a test accuracy of 89.16%, with performance varying across different defect types. The classification report provides detailed metrics for each defect type, including precision, recall, and F1-score.
+- Accuracy of 89% is quite good for a multi-class classification problem, but class imbalances (i.e., some classes are more frequent than others) and misclassifications in certain defect types (like Class 3 (PS) and Class 5 (Sc)) indicate areas for improvement.
+- The F1-scores suggest that Class 0, 2, and 4 are well classified, while Class 1, 3, and 5 could benefit from further attention, especially in terms of precision and recall balance.
 
-### Future Work
+### Suggestions for Improvement:
 
-- Explore more advanced models: Experiment with more complex models like Deep Neural Networks or pre-trained CNNs (e.g., VGG16 or ResNet) for potentially better performance.
-- Data augmentation: Use techniques like flipping, rotating, and scaling to further augment the training dataset.
+- **Class Imbalance**: Consider techniques like class weighting or SMOTE to improve performance on minority classes (like Class 3 and 5).
+- **Model Tuning**: Adjust model parameters (e.g., regularization) to reduce false positives/negatives for certain classes.
+- **Data Augmentation**: Since this is an image classification problem, using data augmentation techniques (like rotating, zooming, or flipping the images) could help improve generalization, especially for underperforming classes.
 
 ### Source
 
